@@ -81,17 +81,11 @@ $env:RUST_ENV="production"; cargo run
 # Установка зависимостей
 cargo build
 
-# Запуск в локальном окружении cmd
+# Запуск в локальном окружении
 set RUST_ENV=local && cargo run
 
-# Запуск в локальном окружении powershell
-$env:RUST_ENV="local"; cargo run
-
-# Запуск в продакшен окружении cmd
+# Запуск в продакшен окружении
 set RUST_ENV=production && cargo run
-
-# Запуск в продакшен окружении powershell
-$env:RUST_ENV="production"; cargo run
 ```
 
 #### Альтернативный способ (рекомендуемый):
