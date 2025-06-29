@@ -4,4 +4,4 @@
 .env.production
 .env.*.local
 .env.docker
-logs/consumer.log
+logs/*.log
