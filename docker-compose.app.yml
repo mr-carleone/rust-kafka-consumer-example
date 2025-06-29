@@ -1,0 +1,34 @@
+services:
+  # Наше Rust приложение
+  rust-consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rust-kafka-consumer
+    environment:
+      RUST_ENV: docker
+      KAFKA_BROKERS: kafka:29092
+      KAFKA_TOPIC: test-topic
+      RUST_LOG: debug
+      LOG_LEVEL: debug
+      RUST_BACKTRACE: 1
+    restart: "no"
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - dashboard_kafka-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # Команда для записи логов в файл
+    command: >
+      sh -c "
+        mkdir -p /app/logs &&
+        ./dashboard > /app/logs/consumer.log 2>&1
+      "
+
+networks:
+  dashboard_kafka-network:
+    external: true

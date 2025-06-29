@@ -1,0 +1,7 @@
+/target
+.env
+.env.local
+.env.production
+.env.*.local
+.env.docker
+logs/consumer.log
